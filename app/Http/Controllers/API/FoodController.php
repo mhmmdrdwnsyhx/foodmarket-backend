@@ -28,7 +28,7 @@ class FoodController extends Controller
             if($food) {
                 return ResponseFormatter::success(
                     $food,
-                    'Data food berhasil diambil'
+                    'Data produk berhasil diambil'
                 );
             } else {
                 return ResponseFormatter::error(
@@ -67,7 +67,7 @@ class FoodController extends Controller
         
         return ResponseFormatter::success(
             $food->paginate($limit),
-            'Data list food berhasil diambil'
+            'Data list produk berhasil diambil'
         );
     }
 }
