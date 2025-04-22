@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Action\Fortify\PasswordValidationRules;
+use App\Actions\Fortify\PasswordValidationRules;
 use App\Helpers\ResponseFormatter;
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -131,7 +131,7 @@ class UserController extends Controller
 
         if($request->file('file'))
         {
-            $file = $request->file->strore('assets/user', 'public');
+            $file = $request->file->store('assets/user', 'public');
 
             $user = Auth::user();
             $user->profile_photo_path = $file;
