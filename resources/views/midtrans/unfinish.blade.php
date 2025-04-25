@@ -16,7 +16,7 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 selection:bg-red-500 selection:text-white dark:text-gray-400">
+        <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 selection:bg-red-500 selection:text-white">
             <p class="text-lg">
                 Transaksi sedang diproses. 
                 <br><small>Silahkan tutup halaman ini</small>

@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\MidtransController;
-
+use App\Http\Controllers\DashboardController;
+use App\Http\Middleware\isAdmin;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,19 @@ use App\Http\Controllers\API\MidtransController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/admin-dashboard');
 });
 
+Route::prefix('dashboard')
+    ->middleware(['auth:sanctum', 'admin'])
+    ->group(function () {
+        Route::get('/', [DashboardController::class, 'index'])->name('admin-dashboard');
+    });
+
+// Midtrans Related
+Route::get('midtrans/success', [MidtransController::class, 'success']);
+Route::get('midtrans/unfinish', [MidtransController::class, 'unfinish']);
+Route::get('midtrans/error', [MidtransController::class, 'error']);
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -28,8 +39,3 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
-
-// Midtrans Related
-Route::get('midtrans/success', [MidtransController::class, 'success']);
-Route::get('midtrans/unfinish', [MidtransController::class, 'unfinish']);
-Route::get('midtrans/error', [MidtransController::class, 'error']);
